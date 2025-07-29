@@ -1,12 +1,11 @@
 const express = require("express");
 const app = express();
+const bookRoutes = require("./routes/book.routes");
 
-app.use(express.json()); // to parse JSON request bodies
+app.use(express.json());
+app.use("/api/books", bookRoutes);
 
-app.get("/", (req, res) => {
-  res.send("HELLLOOO FROM THE EXPRESS!");
-});
-
-app.listen(3000, () => {
-  console.log("Server is running at http://localhost:3000");
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
